@@ -1,0 +1,30 @@
+from from
+gpiozero
+import MCP3008,
+Button
+time import sleep
+3
+from
+random
+import randint
+95b
+10
+11
+12
+13
+14
+15
+16
+17
+1 я
+mcp=MCP3008 (channel=0)
+but=Button (26)
+#led=LEDBoard (26, 19,13,6)
+x = randint (0,10)
+hp = 100
+atk = 20
+print ("Welcome back, captain")
+sleep (0.5)
+print("Your crew awaits your return")
+sleep (0.5)
+while True:
