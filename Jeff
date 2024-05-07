@@ -1,25 +1,5 @@
-from from
-gpiozero
-import MCP3008,
-Button
-time import sleep
-3
-from
-random
-import randint
-95b
-10
-11
-12
-13
-14
-15
-16
-17
-1 я
-mcp=MCP3008 (channel=0)
-but=Button (26)
-#led=LEDBoard (26, 19,13,6)
+
+from time import sleep
 x = randint (0,10)
 hp = 100
 atk = 20
@@ -28,3 +8,76 @@ sleep (0.5)
 print("Your crew awaits your return")
 sleep (0.5)
 while True:
+  start = input ("Enter 'START' to start\n")
+  if start.upper() == 'START':
+    print("Lets Begin")
+    sleep(0.5)
+    break
+def status ():
+  print("Status Report:")
+  sleep(0.5) 
+  print("HP: ", hp)
+  sleep(0.5)
+  print(ATTACK: ", atk)
+  sleep(0.5)
+
+def combatStat(name,hp,atk)
+  print(' ')
+  sleep(0.5)
+  print("We must destory the "+name)
+  sleep(0.5)
+  print("They have ", hp," Health")
+  sleep(0.5) 
+  print("And ",atk, " Attack!")
+  sleep(0.5)
+
+def combat(name,opHp,opAtk):
+  combatStat (name, opHp, opAtk)
+  print(' ')
+  print("Would you like to Attack?")
+  sleep(0.5)
+  print("YOUR ANSWER IS IRRELEVANT, CHARGE THE CANNONS")
+  sleep(1)
+  while opHp>0:
+    hit = randint (1,2)
+    if hit == 1:
+      print("Connection!")
+      opHp-=atk
+      combatStat(name, opHp, opAtk)
+    elif hit == 2:
+      print("partial hit :(")
+      opHp-=(atk/2)
+      combatStat(name, opHp, opAtk)
+    else:
+      print("THEY HIT US")
+      sleep(0.5)
+      print("WE'RE GOING DOWN" )
+      sleep(0.5)
+      print ("GAME OVER")
+      break
+
+status()
+
+while True:
+  print("Where would you like to go Captain?")
+  sleep(1.1)
+  location = input("Sol, Alpha Centuri, or The Barnard System\n")
+  if location.upper() == 'SOL':
+    print("Setting route for The Sol System")
+    sleep(0.5)
+    break
+  if location.upper() == 'ALPHA CENTURI':
+    print ("IN DEV")
+  if location.upper() == 'ALPHA CENTURI':
+    print ("IN DEV")
+
+if location.upper() == 'SOL':
+  pirate = randint (1,1)
+  if pirate == 1:
+    print('A PIRATE IS RAIDING EARTH!')
+    sleep(1)
+    print ( 'WE MUST STOP THEM')
+    combat ('Pirates',75,20)
+else:
+  print("Your crew scouts, but finds nothing")
+
