@@ -1,13 +1,18 @@
 
 from random import randint
 from time import sleep
-x = randint (0,10)
+#x = randint (0,10)
+
 global hp
 hp = 100
 global atk
 atk = 20
 global fuel
 fuel = 5
+global crew
+crew = 15
+#variables for the stats of the ship
+
 print("Welcome back, captain")
 sleep(0.5)
 print("Your crew awaits your return")
@@ -18,12 +23,14 @@ while True:
         print("Lets Begin")
         sleep(0.5)
         break
+      #gotta type 'start'
 
 def dead():
     global hp
     if hp <= 0:
         print("YOU DIED")
         exit()
+#kills the player
 
 def status ():
     print(' ')
@@ -35,6 +42,7 @@ def status ():
     sleep(0.5)
     print("FUEL: ",fuel)
     sleep(0.5)
+#shows the player basic stats
 
 def combatStat(name,hp,atk):
     print(' ')
@@ -45,6 +53,7 @@ def combatStat(name,hp,atk):
     sleep(0.5) 
     print("And ",atk, " Attack!")
     sleep(0.5)
+#shows basic enemy stats
 
 def combat(name,opHp,opAtk):
     global hp
@@ -54,19 +63,23 @@ def combat(name,opHp,opAtk):
     sleep(0.5)
     if fight == 'yes' or fight == 'y':
         sleep(1)
+    #the option to fight!
         while opHp>0:
             if hp > 0:
                 hit = randint (1,3)
+                #Three things can happen in combat
                 if hit == 1:
                     print(' ')
                     print("Connection!")
                     opHp-=atk
                     combatStat(name, opHp, opAtk)
+                    #you do full amount of atk
                 elif hit == 2:
                     print(' ')
                     print("Partial Hit")
                     opHp-=(atk/2)
                     combatStat(name, opHp, opAtk)
+                    #you do partial damage
                 else:
                     print(' ')
                     print("THEY HIT US")
@@ -76,16 +89,20 @@ def combat(name,opHp,opAtk):
                     hp -= dmg
                     sleep(0.5)
                     status()
+                    #you get hit
             else:
                 dead()
+                #if you run out of hp, you die
         print("Pirates Defeated!")
     else:
         print("THEY HIT US")
         print("WERE GOING DOWN")
         hp-=hp
         dead()
+        #if you dont engage, you die instantly. No execptions.
 
 def move():
+  #The function that allows you to choose what system to go to
     global fuel
     while True:
         print(' ')
@@ -93,26 +110,93 @@ def move():
         sleep(1.1)
         print("Sol, Alpha Centuri, or The Barnard System")
         sleep(1)
+        #Naming systems
         global location; location = input("Pirates raid the Sol system regularly.\nAlpha Centuri is inhabited by the Ones of Steel, they are a very dangerous gang.\nThe Bernard System is a trade system.\n")
-        
+                                                    #This is a basic description of the systems
         if location.upper() == 'SOL' and fuel > 0:
             print("Setting route for The Sol System")
             sleep(0.5)
             fuel-=1
             print("We have ", fuel, "fuel left")
             break
+          #moves you to the sol system
         if location.upper() == 'ALPHA CENTURI':
             print ("IN DEV")
+            #in dev
         if location.upper() == 'ALPHA CENTURI':
             print ("IN DEV")
+            #in  dev
+
+def expidition(planet,odds):
+    global crew
+    global fuel
+    global atk
+    global hp
+    #Brings in those spicy stats
+    print(' ')
+    print("The planet ",planet," semms fishy")
+    sleep(0.5)
+    investigate = input("Would you like to investigate?\n")
+    if investigate == 'yes' or investigate == 'y':
+        encounter = randint(0,odds)
+        #player consent to investigate required :)
+        if encounter == 0:
+            print("SIR, We have encountered a settlement")
+            sleep(0.5)
+            print("The locals are attemting to contact us")
+            sleep(0.5)
+            #The settlement chain
+            gift = randint(0,1)
+            if gift == 0:
+                print("The locals require assistence")
+                sleep(0.5)
+                accept = input("They need four crew members")
+                if accept == 'yes' or accept == 'y'
+                    print("They thank us greatly")
+                    sleep(0.5)
+                    crew -= 4
+                    print("We have ",crew" members left")
+                    sleep(0.5)
+                    print("It seems they have delivered us 2 fuel")
+                    fuel += 2
+                    status()
+                    #They provide us with fuel
+            if gift == 1:
+                print("The locals require assistence")
+                sleep(0.5)
+                accept = input("They need four crew members")
+                if accept == 'yes' or accept == 'y'
+                    print("They thank us shunly")
+                    sleep(0.5)
+                    crew -= 4
+                    print("We have ",crew" members left")
+                    sleep(0.5)
+                    print("It seems they have stolen 2 fuel")
+                    fuel -= 2
+                    status()
+                    #They violently rob us
+                
+        elif encounter == 1:
+            print("SIR, an abandoned ship has apeared on our sensors")
+            #in dev
+        else:
+            print("SIR, there is nothing here")
+            #in dev
+    else:
+        print("We shall move on")
+        #Keep on keeping on
+
+#Beginning of actual game
 
 status()
 move()
+
 
 if location.upper() == 'SOL':
     pirate = randint (0,1)
     #print(pirate)
 if pirate == 1:
+    print(' ')
     print('A PIRATE IS RAIDING EARTH!')
     sleep(1)
     print ( 'WE MUST STOP THEM')
@@ -123,10 +207,15 @@ if pirate == 1:
     status()
     fuelGain = 0
     dead()
+    #Gotta fight those pirates
 else:
-    print("How")
-    
+    print(' ')
+    print("Earth seems fine, for now")
+    sleep(0.5)
+    #no pirates
 
+expidition('mars',4)
+#Look at mars
     
     
     
