@@ -23,6 +23,12 @@ while True:
         print("Lets Begin")
         sleep(0.5)
         break
+    elif start.upper() == 'RIGGED':
+        print("Game time >:)")
+        hp*=20
+        atk*=20
+        fuel*=100
+        crew*=100
       #gotta type 'start'
 
 def dead():
@@ -93,7 +99,7 @@ def combat(name,opHp,opAtk):
             else:
                 dead()
                 #if you run out of hp, you die
-        print("Pirates Defeated!")
+        print(name," Defeated!")
     else:
         print("THEY HIT US")
         print("WERE GOING DOWN")
@@ -121,23 +127,32 @@ def move():
             break
           #moves you to the sol system
         if location.upper() == 'ALPHA CENTURI':
-            print ("IN DEV")
-            #in dev
-        if location.upper() == 'ALPHA CENTURI':
-            print ("IN DEV")
+            print("Setting route for The Sol System")
+            sleep(0.5)
+            fuel-=1
+            print("We have ", fuel, "fuel left")
+            break
+            #To the Alpha centuri system!
+        if location.upper() == 'BERNARD' or location.upper() == 'BERNARD SYSTEM' or location.upper() == 'THE BERNARD SYSTEM':
+            sleep(0.5)
+            fuel-=1
+            print("We have ", fuel, "fuel left")
+            break
             #in  dev
 
-def expidition(planet,odds):
+def expidition(planet,odds,specialMessage):
     global crew
     global fuel
     global atk
     global hp
     #Brings in those spicy stats
     print(' ')
-    print("The planet ",planet," semms fishy")
+    print("The planet ",planet," seems fishy")
     sleep(0.5)
     investigate = input("Would you like to investigate?\n")
     if investigate == 'yes' or investigate == 'y':
+        print(specialMessage)
+        sleep(1)
         encounter = randint(0,odds)
         #player consent to investigate required :)
         if encounter == 0:
@@ -150,34 +165,68 @@ def expidition(planet,odds):
             if gift == 0:
                 print("The locals require assistence")
                 sleep(0.5)
-                accept = input("They need four crew members")
-                if accept == 'yes' or accept == 'y'
+                accept = input("They need four crew members\n")
+                if accept == 'yes' or accept == 'y':
                     print("They thank us greatly")
                     sleep(0.5)
                     crew -= 4
-                    print("We have ",crew" members left")
+                    print("We have ",crew," members left")
                     sleep(0.5)
                     print("It seems they have delivered us 2 fuel")
                     fuel += 2
                     status()
                     #They provide us with fuel
-            if gift == 1:
+                else:
+                    print("We will depart then")
+                    
+            elif gift == 1:
                 print("The locals require assistence")
                 sleep(0.5)
-                accept = input("They need four crew members")
-                if accept == 'yes' or accept == 'y'
+                accept = input("They need four crew members\n")
+                if accept == 'yes' or accept == 'y':
                     print("They thank us shunly")
                     sleep(0.5)
                     crew -= 4
-                    print("We have ",crew" members left")
+                    print("We have ",crew," members left")
                     sleep(0.5)
                     print("It seems they have stolen 2 fuel")
                     fuel -= 2
                     status()
                     #They violently rob us
-                
+                else:
+                    print("Good idea, those locals seem fishy")
         elif encounter == 1:
             print("SIR, an abandoned ship has apeared on our sensors")
+            accept = input("Would you like to send a crew to investigate?\n")
+            if accept == 'yes' or accept == 'y':
+                print("Sending a squad")
+                shipOdds = randint(0,5)
+                if shipOdds == 0:
+                    print("Oh wow")
+                    print("We found a hull upgrade!")
+                    hp+=10
+                    status()
+                elif shipOdds == 1:
+                    print("Nice!")
+                    print("We found pristine weponry")
+                    atk+=10
+                    status()
+                elif shipOdds == 2:
+                    fuelFound = randint(0,5)
+                    print("Whats this?")
+                    print("We found ",fuelFound,' feul')
+                    fuel+=fuelFound
+                    status()
+                elif shipOdds == 3:
+                    print("Oh no")
+                    print("The wires were faulty! We lost the whole squad")
+                    crew-=4
+                    print("We have ",crew,' crew left')
+                else:
+                    print("How unfortunate")
+                    print("There is nothing here")
+            else:
+                print("No need to stick around")
             #in dev
         else:
             print("SIR, there is nothing here")
@@ -189,33 +238,47 @@ def expidition(planet,odds):
 #Beginning of actual game
 
 status()
-move()
 
 
-if location.upper() == 'SOL':
-    pirate = randint (0,1)
-    #print(pirate)
-if pirate == 1:
-    print(' ')
-    print('A PIRATE IS RAIDING EARTH!')
-    sleep(1)
-    print ( 'WE MUST STOP THEM')
-    combat ('Pirates',75,20)
-    fuelGain = randint(0,4)
-    print('You aquired ', fuelGain,' fuel')
-    fuel+=fuelGain
-    status()
-    fuelGain = 0
-    dead()
-    #Gotta fight those pirates
-else:
-    print(' ')
-    print("Earth seems fine, for now")
-    sleep(0.5)
-    #no pirates
-
-expidition('mars',4)
-#Look at mars
+while True:
+    move()
+    if location.upper() == 'SOL':
+        pirate = randint (0,1)
+        #print(pirate)
+        if pirate == 1:
+            print(' ')
+            print('A PIRATE IS RAIDING EARTH!')
+            sleep(1)
+            print ( 'WE MUST STOP THEM')
+            combat ('Pirates',75,20)
+            fuelGain = randint(0,4)
+            print('You aquired ', fuelGain,' fuel')
+            fuel+=fuelGain
+            status()
+            fuelGain = 0
+            dead()
+            pirate+=1
+            
+            #Gotta fight those pirates
+        else:
+            print(' ')
+            print("Earth seems fine, for now")
+            sleep(0.5)
+            #no pirates
+    
+        expidition('mars',2,'')
+        #Look at mars
+        expidition('jupiter',3,'Incoming Transmission\nYou must help my family! They are being harrased in the Alpha Centuri System, by The Ones of Steel\nTransmission Terminated\n ')
+        #Jupiter comes with a special message, boss fight alert :)
+    
+        print(' ')
+        
+        print("That man in the transmission said we should help his family.\nI think we should go to the Bernard system to resupply, and advance our weponry")
+        sleep(2)
+    
+    elif location.upper() == 'BERNARD' or location.upper() == 'BERNARD SYSTEM' or location.upper() == 'THE BERNARD SYSTEM':
+        print("lol")
+    
     
     
     
