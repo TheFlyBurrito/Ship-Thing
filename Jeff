@@ -1,4 +1,5 @@
 
+
 from random import randint
 from time import sleep
 #x = randint (0,10)
@@ -33,7 +34,10 @@ while True:
         fuel*=100
         crew*=100
       #gotta type 'start'
-
+    elif start.upper() == 'POKEMON':
+        print('Wrong franchise bud')
+        print('¯\_(ツ)_/¯')
+        
 def dead():
     global hp
     if hp <= 0:
@@ -117,7 +121,7 @@ def move():
         print(' ')
         print("Where would you like to go Captain?")
         sleep(1.1)
-        print("Sol, Alpha Centuri, or The Barnard System")
+        print("Sol, Alpha Centuri, or The Bernard System")
         sleep(1)
         #Naming systems
         global location; location = input("Pirates raid the Sol system regularly.\nAlpha Centuri is inhabited by the Ones of Steel, they are a very dangerous gang.\nThe Bernard System is a trade system.\n")
@@ -129,14 +133,15 @@ def move():
             print("We have ", fuel, "fuel left")
             break
           #moves you to the sol system
-        if location.upper() == 'ALPHA CENTURI':
-            print("Setting route for The Sol System")
+        if location.upper() == 'ALPHA CENTURI' or location.upper() == 'ALPHA' or location.upper() == 'CENTURI':
+            print("Setting route for The Alpha Centuri System")
             sleep(0.5)
             fuel-=1
             print("We have ", fuel, "fuel left")
             break
             #To the Alpha centuri system!
         if location.upper() == 'BERNARD' or location.upper() == 'BERNARD SYSTEM' or location.upper() == 'THE BERNARD SYSTEM':
+            print("\nSetting route for The Alpha Centuri System")
             sleep(0.5)
             fuel-=1
             print("We have ", fuel, "fuel left")
@@ -247,23 +252,24 @@ def expidition(planet,odds,specialMessage):
                     print("There is nothing here")
             else:
                 print("No need to stick around")
-            #in dev
+            
         else:
             print("SIR, there is nothing here")
-            #in dev
+            
     else:
         print("We shall move on")
-        #Keep on keeping on
+        #Keep on keeping on :(
 
 def trade():
     global crew
     global fuel
     global atk
     global hp
+    global solVisited
     print(' ')
     sleep(0.5)
     trader = input('Would you like to exchange goods with the locals?\n')
-    if trader == 'yes' or trader == 'y':
+    if trader.lower() == 'yes' or trader == 'y':
         while True:
             print("(TO BUY, TYPE 'buy', TO CONTINUE TYPE 'continue' ")
             print(' ')
@@ -280,7 +286,7 @@ def trade():
             print("It only cosstss sssay, ssix crew")
             sleep(0.5)
             buy1 = input("You would like tooo buy?\n")
-            if buy1 == 'buy':
+            if buy1.lower() == 'buy':
                 crew-=6
                 print("You have ",crew,' crew left')
                 print('Outsstanding, yessss')
@@ -297,6 +303,7 @@ def trade():
             else:
                 print('Awwww, I need thosse men to help my fffamily')
                 break
+            
         while True:
             sleep(0.5)
             print(' ')
@@ -317,7 +324,7 @@ def trade():
             print("I don't know if we can spare it")
             sleep(0.5)
             buy2 = input("\nSo you will buy my amazing hull peice?\n")
-            if buy2 == 'buy':
+            if buy2.lower() == 'buy':
                 fuel-=3
                 print('Welp, there goes the fuel')
                 sleep(0.5)
@@ -325,6 +332,8 @@ def trade():
                 sleep(0.5)
                 hp*=2
                 status()
+                sleep(0.5)
+                print('TRANSMISSION TERMINATED')
                 break
             else:
                 print('\nDo come again soon?')
@@ -332,12 +341,46 @@ def trade():
                 print('TRANSMISSION TERMINATED')
                 break
             
+        while True:
+            print('TRANSMISSION INCOMING')
+            sleep(0.5)
+            print('\nHeelo There Sir')
+            sleep(0.5)
+            print('Whatcha need from meesa?')
+            sleep(0.5)
+            if solVisited == True:
+                print('\nWe need supplies')
+                sleep(0.5)
+                print('A man on jupiter has pled to us to find his family')
+                sleep(0.5)
+                print('\nWhere theysa at?')
+                sleep(0.5)
+                print('\nThe Alpha Centuri system')
+                sleep(0.5)
+                print('\nOh No!')
+                sleep(0.5)
+                print('Meesa would never go there')
+                sleep(0.5)
+                print('Take thisa gun here')
+                sleep(0.5)
+                print('Yousa need it more than meesa')
+                atk+=randint(30,50)
+                status()
+                print('TRANSMISSION TERMINATED')
+            else:
+                sleep(0.5)
+                print('\nNothing')
+                print('TRANSMISSION TERMINATED')
+            
 #Beginning of actual game
 
 status()
 
+global solVisited 
 solVisited = False
+global bernardVisited 
 bernardVisited = False
+global alphaVisited 
 alphaVisited = False
 
 while True:
@@ -368,9 +411,12 @@ while True:
     
         expidition('mars',1,'')
         #Look at mars
-        expidition('jupiter',2,'Incoming Transmission\nYou must help my family! They are being harrased in the Alpha Centuri System, by The Ones of Steel\nTransmission Terminated\n ')
+        expidition('jupiter',2,'')
         #Jupiter comes with a special message, boss fight alert :)
-    
+        sleep(0.5)
+        print('\nIncoming Transmission\nYou must help my family! They are being harrased in the Alpha Centuri System, by The Ones of Steel\nTransmission Terminated\n ')
+        sleep(1.5)
+        
         print(' ')
         sleep(0.5)
         print("That man in the transmission said we should help his family.\nI think we should go to the Bernard system to resupply, and advance our weponry")
@@ -384,6 +430,44 @@ while True:
         print("Welcome to the Bernard System")
         sleep(0.5)
         trade()
+        
+        bernardVisited = True
+        
+    elif location.upper() == 'ALPHA CENTURI' or location.upper() == 'ALPHA' or location.upper() == 'CENTURI':
+        sleep(0.5)
+        print("\nWelcome to the Alpha Centuri System")
+        sleep(0.5)
+        print('\nINCOMING TRANSMISSION')
+        sleep(0.5)
+        print('YOU THERE')
+        sleep(0.5)
+        print("YOU DARE INTRUDE ON ONES OF STEEL TERRITORY")
+        sleep(0.5)
+        print('LEAVE NOW OR FACE OUR WRATH')
+        sleep(0.5)
+        if solVisited == True and bernardVisited == True:
+            print("\nWe have to help that man's family")
+            sleep(0.5)
+            print('Those gus sure will come in handy!')
+            sleep(0.5)
+            print("FOR LIBERTY")
+        elif solVisited == True:
+            print("\nThat man's family needs us")
+            sleep(0.5)
+            print("We might die though")
+        elif bernardVisited == True:
+            print('\nStraight from shopping to getting killed?')
+            sleep(0.5)
+            print("I have a bad feeling about this")
+        else:
+            print("\nWe are unprepared for anything of this proportion!")
+            sleep(0.5)
+            print("We are doomed")
+        threat = input("\nWILL YOU SURRENDER?\n")
+        if threat.upper() == 'NO' or threat.upper() == 'N':
+            print('Lets do this')
+            combat('ONE OF STEEL',200,50)
+        
     
     
     
