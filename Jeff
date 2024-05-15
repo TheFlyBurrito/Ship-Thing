@@ -342,7 +342,7 @@ def trade():
                 break
             
         while True:
-            print('TRANSMISSION INCOMING')
+            print('\nTRANSMISSION INCOMING')
             sleep(0.5)
             print('\nHeelo There Sir')
             sleep(0.5)
@@ -367,10 +367,12 @@ def trade():
                 atk+=randint(30,50)
                 status()
                 print('TRANSMISSION TERMINATED')
+                break
             else:
                 sleep(0.5)
                 print('\nNothing')
                 print('TRANSMISSION TERMINATED')
+                break
             
 #Beginning of actual game
 
@@ -467,6 +469,8 @@ while True:
         if threat.upper() == 'NO' or threat.upper() == 'N':
             print('Lets do this')
             combat('ONE OF STEEL',200,50)
+            dead()
+            print('We did it!')
         
     
     
