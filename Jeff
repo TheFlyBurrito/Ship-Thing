@@ -124,7 +124,7 @@ def move():
         print("Sol, Alpha Centuri, or The Bernard System")
         sleep(1)
         #Naming systems
-        global location; location = input("Pirates raid the Sol system regularly.\nAlpha Centuri is inhabited by the Ones of Steel, they are a very dangerous gang.\nThe Bernard System is a trade system.\n")
+        global location; location = input("Pirates raid the Sol system regularly.\nAlpha Centuri is inhabited by the Ones of Steel, they are a very dangerous cult.\nThe Bernard System is a trade system.\n")
                                                     #This is a basic description of the systems
         if location.upper() == 'SOL' and fuel > 0:
             print("Setting route for The Sol System")
@@ -133,14 +133,14 @@ def move():
             print("We have ", fuel, "fuel left")
             break
           #moves you to the sol system
-        if location.upper() == 'ALPHA CENTURI' or location.upper() == 'ALPHA' or location.upper() == 'CENTURI':
+        if location.upper() == 'ALPHA CENTURI' or location.upper() == 'ALPHA' or location.upper() == 'CENTURI' and fuel > 0:
             print("Setting route for The Alpha Centuri System")
             sleep(0.5)
             fuel-=1
             print("We have ", fuel, "fuel left")
             break
             #To the Alpha centuri system!
-        if location.upper() == 'BERNARD' or location.upper() == 'BERNARD SYSTEM' or location.upper() == 'THE BERNARD SYSTEM':
+        if location.upper() == 'BERNARD' or location.upper() == 'BERNARD SYSTEM' or location.upper() == 'THE BERNARD SYSTEM' and fuel > 0:
             print("\nSetting route for The Alpha Centuri System")
             sleep(0.5)
             fuel-=1
@@ -467,12 +467,61 @@ while True:
             print("We are doomed")
         threat = input("\nWILL YOU SURRENDER?\n")
         if threat.upper() == 'NO' or threat.upper() == 'N':
+            print('\nTRANSMISSION TERMINATED')
             print('Lets do this')
             combat('ONE OF STEEL',200,50)
             dead()
             print('We did it!')
-        
-    
+            sleep(0.5)
+            print('YOU FOOL')
+            sleep(0.5)
+            print("DO YOU KNOW WHAT YOU HAVE DONE?")
+            sleep(0.5)
+            print("THE ONE OF DARKNESS")
+            sleep(0.5)
+            print("HE LIES BEYOND THE WORMHOLE")
+            sleep(0.5)
+            print("THAT WE WERE GARDING")
+            sleep(0.5)
+            print("YOU HAVE DOOMED THIS REALITY")
+            sleep(0.5)
+            print("\nINCOMING TRANSMISSION")
+            sleep(0.5)
+            if solVisited == True:
+                print("Hello again!")
+                sleep(0.5)
+                print("\nIts the man from earlier!")
+            else:
+                print("Hello there!")
+                sleep(0.5)
+                print("\nWho is this guy?")
+            sleep(0.5)
+            print("\nIf you dont know, I am the great sourcerer")
+            sleep(0.5)
+            print("The beings on the other side of this portal have called me to help them!")
+            sleep(0.5)
+            print("\nLooks like somthing is emerging from that wormhole!")
+            sleep(0.5)
+            print("\nHello my parents!")
+            sleep(0.5)
+            print("\nYOU WILL MAKE A NICE SNACK YOUNG ONE")
+            print("\nIt apears that the 'dark ones' just ate 'the great sourcerer'")
+            sleep(0.5)
+            print("\nTRANSMISSION TERMINATED")
+            sleep(0.5)
+            print("\nINCOMING TRANSMISSION")
+            sleep(0.5)
+            print("THE ONES OF STEEL WISH TO GRANT YOU OUR SHIP")
+            sleep(0.5)
+            print("TRANSMISSION TERMINATED")
+            hp+=200
+            atk+=50
+            status()
+            print("\nWell, lets go monster hunting!")
+            sleep(0.5)
+            print("YOU SHALL DIEEEEEEEEEEEEE")
+            sleep(0.5)
+            combat("THE DARK ONE",300,50)
     
     
     
