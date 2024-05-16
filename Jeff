@@ -180,7 +180,7 @@ def fighter():
     global shipLocation
     
     enterFighter = input("\nWould you like to enter your fighter?\n")
-    if enterFighter.upper() == "YES" and fighterEntered == True or enterFighter.upper() == "Y" and fighterEntered == False:
+    if enterFighter.upper() == "YES" and fighterEntered == False or enterFighter.upper() == "Y" and fighterEntered == False:
         hp = 50
         atk = 100
         fuel = 2
@@ -335,7 +335,7 @@ def trade(): #bernard syatem traders
             print("It only cosstss sssay, ssix crew")
             sleep(0.5)
             
-            buy1 = input("You would like tooo buy?\n")
+            buy1 = input("You would like tooo buy? (type 'buy')\n")
             
             if buy1.lower() == 'buy':#say no
                 crew-=6
@@ -375,7 +375,7 @@ def trade(): #bernard syatem traders
             print("I don't know if we can spare it")
             sleep(0.5)
             
-            buy2 = input("\nSo you will buy my amazing hull peice?\n")
+            buy2 = input("\nSo you will buy my amazing hull peice? (use buy)\n")
             #if you buy it, it doubles hp
             if buy2.lower() == 'buy':
                 fuel-=3
@@ -449,9 +449,9 @@ def trade(): #bernard syatem traders
         while True:
             print("\nYOU THERE")
             sleep(0.5)
-            print("WOULD YOU LIKE TO PURCHASE LIMITED ADITION ONE OF STEEL MERCH?")
+            print("WOULD YOU LIKE TO PURCHASE LIMITED ADITION ONE OF STEEL MERCH? (use 'buy')")
             buyDLC = input("ONLY 1 BATTERY\n") #lil goofy thing
-            if buyDLC.upper() == 'YES' or buyDLC.upper() == 'Y':
+            if buyDLC.upper() == 'BUY' or buyDLC.upper() == 'B':
                 global Merch
                 Merch = 'ONE OF STEEL'#Fine merch :)
                 atk -= 10
@@ -476,8 +476,8 @@ def trade(): #bernard syatem traders
             sleep(0.5)
             print("Tails, you get the intel")
             sleep(0.5)
-            flip = input("You in?\n")
-            if flip.upper() == 'YES' or flip.upper() == 'Y':
+            flip = input("You in? (still have to type 'buy') \n")
+            if flip.upper() == 'BUY' or flip.upper() == 'B':
                 print("Lets do this")
                 coinFlip = randind(0,2)
                 if coinFlip == 0:
