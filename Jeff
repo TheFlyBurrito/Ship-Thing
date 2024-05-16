@@ -11,6 +11,11 @@ global fuel
 fuel = 5
 global crew
 crew = 15
+
+global shipLocation
+shipLocation = ""
+global fighterEntered
+fighterEntered = False
 #variables for the stats of the ship
 
 
@@ -145,7 +150,7 @@ def move():
             break
             #To the Alpha centuri system!
         if location.upper() == 'BERNARD' or location.upper() == 'BERNARD SYSTEM' or location.upper() == 'THE BERNARD SYSTEM' and fuel > 0:
-            print("\nSetting route for The Alpha Centuri System")
+            print("\nSetting route for The Bernard System")
             sleep(0.5)
             fuel-=1
             print("We have ", fuel, "fuel left")
@@ -172,15 +177,16 @@ def fighter():
     global hp
     global location
     global fighterEntered
-    shipLocation = location
+    global shipLocation
     
-    enterFighter = input("\nWuld you like to enter your fighter?\n")
-    if enterFighter.upper() == "YES" or enterFighter.upper() == "Y" and fighterEntered == False:
+    enterFighter = input("\nWould you like to enter your fighter?\n")
+    if enterFighter.upper() == "YES" and fighterEntered == True or enterFighter.upper() == "Y" and fighterEntered == False:
         hp = 50
         atk = 100
         fuel = 2
         status()
-        print("Your Battleship is at ",location)
+        shipLocation = location
+        print("Your Battleship is at ",shipLocation)
         fighterEntered = True
     elif location == shipLocation and fighterEntered == True:
         print("Welcome back sir")
