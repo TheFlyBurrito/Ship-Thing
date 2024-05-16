@@ -165,6 +165,33 @@ def move():
             sleep(2)
             #EASTER EGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
+def fighter():
+    global crew
+    global fuel
+    global atk
+    global hp
+    global location
+    global fighterEntered
+    shipLocation = location
+    
+    enterFighter = input("\nWuld you like to enter your fighter?\n")
+    if enterFighter.upper() == "YES" or enterFighter.upper() == "Y" and fighterEntered == False:
+        hp = 50
+        atk = 100
+        fuel = 2
+        status()
+        print("Your Battleship is at ",location)
+        fighterEntered = True
+    elif location == shipLocation and fighterEntered == True:
+        print("Welcome back sir")
+        hp = 100
+        atk = 20
+        fuel = 5
+        status()
+        fighterEntered == False
+    else:
+        print("No Fighter then")
+
 def expidition(planet,odds,specialMessage):
     global crew
     global fuel
@@ -429,6 +456,40 @@ def trade(): #bernard syatem traders
             else:
                 print("OK")
                 break
+        while True:
+            print("\nINCOMING TRANSMISSION")
+            print("Hello there sir")
+            sleep(0.5)
+            print("What I have, you need")
+            sleep(0.5)
+            print("Top teir intel on some things you need to know")
+            sleep(0.5)
+            print("Lets flip a coin")
+            sleep(0.5)
+            print("Heads, you die")
+            sleep(0.5)
+            print("Tails, you get the intel")
+            sleep(0.5)
+            flip = input("You in?\n")
+            if flip.upper() == 'YES' or flip.upper() == 'Y':
+                print("Lets do this")
+                coinFlip = randind(0,2)
+                if coinFlip == 0:
+                    print("Heads!")
+                    hp -= hp
+                    dead()
+                else:
+                    print("Tails....")
+                    sleep(0.5)
+                    print("Accept the wizard")
+                    sleep(0.5)
+                    print("Bye now!")
+                    sleep(0.5)
+                    print("TRANSMISSION TERMINATED")
+            else:
+                print("Boo hoo")
+                sleep(0.5)
+                print("TRANSMISSION TERMINATED")
             
 #Beginning of actual game
 
@@ -443,6 +504,7 @@ alphaVisited = False
 
 while True:
     move()
+    fighter()
     if location.upper() == 'SOL':
         #ramdom chance for pirate spawn
         pirate = randint (0,1)
@@ -480,9 +542,8 @@ while True:
         print('\nIncoming Transmission\nYou must help my family! They are being harrased in the Alpha Centuri System, by The Ones of Steel\nTransmission Terminated\n ')
         sleep(2.5)
         
-        print(' ')
         sleep(0.5)
-        print("That man in the transmission said we should help his family.\nI think we should go to the Bernard system to resupply, and advance our weponry")
+        print("\nThat man in the transmission said we should help his family.\nI think we should go to the Bernard system to resupply, and advance our weponry")
         sleep(2)
         
         solVisited = True
@@ -675,7 +736,7 @@ while True:
                         print("This cycle repeats for eternity")
                         sleep(0.5)
                         print("Is this what you wanted?")
-    	                exit()
+                        exit()
     
             
             else: #chosing not to fight? die
@@ -688,11 +749,11 @@ while True:
                 
                 
         else:
-            print("INCOMING TRANSMISSION")
+            print("\nINCOMING TRANSMISSION")
             sleep(0.5)
             print("ONES OF STEEL HERE")
             sleep(0.5)
-            print("\nDARN") #NOICE ENDING
+            print("DARN") #NOICE ENDING
             sleep(0.5)
             print("HELLA FINE MERCH")
             sleep(0.5)
