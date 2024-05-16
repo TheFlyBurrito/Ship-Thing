@@ -64,6 +64,8 @@ def status ():
     sleep(0.5)
     print("FUEL: ",fuel)
     sleep(0.5)
+    print("CREW: ",crew)
+    sleep(0.5)
 #shows the player basic stats
 
 def combatStat(name,hp,atk):
@@ -178,25 +180,26 @@ def fighter():
     global location
     global fighterEntered
     global shipLocation
-    
+    #lil ship for exploration
     enterFighter = input("\nWould you like to enter your fighter?\n")
     if enterFighter.upper() == "YES" and fighterEntered == False or enterFighter.upper() == "Y" and fighterEntered == False:
         hp = 50
-        atk = 100
-        fuel = 2
+        atk = 100 #<-- THIS STAT IS SOOO BROKEN AND UNFAIR
+        fuel = 2    #I LOVE IT
         status()
         shipLocation = location
         print("Your Battleship is at ",shipLocation)
         fighterEntered = True
-    elif location == shipLocation and fighterEntered == True:
+    elif location == shipLocation and fighterEntered == True:#all stats return to normal
+            #can be abused, so have fun!
         print("Welcome back sir")
         hp = 100
         atk = 20
         fuel = 5
         status()
-        fighterEntered == False
+        fighterEntered == False#Not in your fighter anymore
     else:
-        print("No Fighter then")
+        print("No Fighter then")#no refuel at alien systems without ship
 
 def expidition(planet,odds,specialMessage):
     global crew
@@ -210,7 +213,7 @@ def expidition(planet,odds,specialMessage):
     investigate = input("Would you like to investigate?\n")
     if investigate == 'yes' or investigate == 'y':
         sleep(0.5)
-        print(specialMessage)
+        print(specialMessage) # <- cool idea, not used
         sleep(1)
         encounter = randint(0,odds)
         #player consent to investigate required :)
@@ -357,7 +360,7 @@ def trade(): #bernard syatem traders
                 break
                 #you are a bad person if you deny him
         while True:
-            sleep(0.5)
+            sleep(0.5)#posh boi
             print('\nINCOMING TRANSSMISSION')
             sleep(0.5)
             print('Good day, sir')
@@ -450,11 +453,11 @@ def trade(): #bernard syatem traders
             print("\nYOU THERE")
             sleep(0.5)
             print("WOULD YOU LIKE TO PURCHASE LIMITED ADITION ONE OF STEEL MERCH? (use 'buy')")
-            buyDLC = input("ONLY 1 BATTERY\n") #lil goofy thing
+            buyDLC = input("ONLY 1 GUN BATTERY\n") #lil goofy thing
             if buyDLC.upper() == 'BUY' or buyDLC.upper() == 'B':
                 global Merch
-                Merch = 'ONE OF STEEL'#Fine merch :)
-                atk -= 10
+                Merch = 'ONE OF STEEL'#Fine merch 
+                atk -= 10           #IF YOU HAVE MERCH, YOU GET THE BEST ENDING ;)
                 print("\nTHE CULT APRICIATES YOUR DONATION")
                 sleep(0.5)
                 status()
@@ -464,13 +467,13 @@ def trade(): #bernard syatem traders
                 break
         while True:
             print("\nINCOMING TRANSMISSION")
-            print("Hello there sir")
+            print("Hello there sir")#espinoge
             sleep(0.5)
             print("What I have, you need")
             sleep(0.5)
             print("Top teir intel on some things you need to know")
             sleep(0.5)
-            print("Lets flip a coin")
+            print("Lets flip a coin")#gambeling >:)
             sleep(0.5)
             print("Heads, you die")
             sleep(0.5)
@@ -479,13 +482,13 @@ def trade(): #bernard syatem traders
             flip = input("You in? (still have to type 'buy') \n")
             if flip.upper() == 'BUY' or flip.upper() == 'B':
                 print("Lets do this")
-                coinFlip = randind(0,2)
+                coinFlip = randind(0,2)#Game rigged in your favor
                 if coinFlip == 0:
-                    print("Heads!")
+                    print("Heads!")#Heads you die
                     hp -= hp
                     dead()
                 else:
-                    print("Tails....")
+                    print("Tails....")#tails you get info
                     sleep(0.5)
                     print("Accept the wizard")
                     sleep(0.5)
@@ -529,8 +532,8 @@ while True:
             status()
             fuelGain = 0
             dead()
-            pirate+=1
-            #pirates only once NO GRINDING FOR FUEL TO THEN USE ON THE HP GUY
+            
+            #pirates are cool. Kill many
             
             #Gotta fight those pirates
         else:
