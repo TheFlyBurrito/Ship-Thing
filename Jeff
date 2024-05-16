@@ -16,7 +16,8 @@ crew = 15
 
 
 
-
+print("(FOR MOST THINGS, YES OR NO WILL SUFFICE)")
+print("(UNLESS THE GAME TELLS YOU OTHERWISE (shop, ect))")
 print('Welcome back, captain')
 sleep(0.5)
 print("Your crew awaits your return")
@@ -412,6 +413,22 @@ def trade(): #bernard syatem traders
                 print('\nNothing')
                 print('TRANSMISSION TERMINATED')
                 break
+        while True:
+            print("\nYOU THERE")
+            sleep(0.5)
+            print("WOULD YOU LIKE TO PURCHASE LIMITED ADITION ONE OF STEEL MERCH?")
+            buyDLC = input("ONLY 1 BATTERY\n") #lil goofy thing
+            if buyDLC.upper() == 'YES' or buyDLC.upper() == 'Y':
+                global Merch
+                Merch = 'ONE OF STEEL'#Fine merch :)
+                atk -= 10
+                print("\nTHE CULT APRICIATES YOUR DONATION")
+                sleep(0.5)
+                status()
+                break
+            else:
+                print("OK")
+                break
             
 #Beginning of actual game
 
@@ -484,121 +501,208 @@ while True:
         sleep(0.5)
         print("\nWelcome to the Alpha Centuri System")
         sleep(0.5)
-        print('\nINCOMING TRANSMISSION')
-        sleep(0.5)
-        print('YOU THERE')
-        sleep(0.5)
-        print("YOU DARE INTRUDE ON ONES OF STEEL TERRITORY")
-        sleep(0.5)
-        print('LEAVE NOW OR FACE OUR WRATH')
-        sleep(0.5)
-        
-        if solVisited == True and bernardVisited == True: #if you prepared
-            print("\nWe have to help that man's family")
+        if Merch != 'ONE OF STEEL':
+            print('\nINCOMING TRANSMISSION')
             sleep(0.5)
-            print('Those gus sure will come in handy!')
+            print('YOU THERE')
             sleep(0.5)
-            print("FOR LIBERTY")
-            
-        elif solVisited == True: #skipping the shop?
-            print("\nThat man's family needs us")
+            print("YOU DARE INTRUDE ON ONES OF STEEL TERRITORY")
             sleep(0.5)
-            print("We might die though")
-            
-        elif bernardVisited == True: #skpping sol :/
-            print('\nStraight from shopping to getting killed?')
-            sleep(0.5)
-            print("I have a bad feeling about this")
-            
-        else: #Speedruner :O
-            print("\nWe are unprepared for anything of this proportion!")
-            sleep(0.5)
-            print("We are doomed")
-            
-        threat = input("\nWILL YOU SURRENDER?\n")
-        #those cultists, theatening me
-        if threat.upper() == 'NO' or threat.upper() == 'N':
-            print('\nTRANSMISSION TERMINATED')
-            print('Lets do this')
-            
-            combat('ONE OF STEEL',200,50) # mans a tank, you need those buffs
-            dead()
-            
-            print('We did it!')
-            sleep(0.5)
-            print('YOU FOOL')
-            sleep(0.5)
-            print("DO YOU KNOW WHAT YOU HAVE DONE?")
-            sleep(0.5)
-            print("THE ONE OF DARKNESS")
-            sleep(0.5)
-            print("HE LIES BEYOND THE WORMHOLE")
-            sleep(0.5)
-            print("THAT WE WERE GARDING")
-            sleep(0.5)
-            print("YOU HAVE DOOMED THIS REALITY")
-            sleep(0.5)
-            print("\nINCOMING TRANSMISSION")
+            print('LEAVE NOW OR FACE OUR WRATH')
             sleep(0.5)
             
-            if solVisited == True: #that guy
-                print("Hello again!")
+            if solVisited == True and bernardVisited == True: #if you prepared
+                print("\nWe have to help that man's family")
                 sleep(0.5)
-                print("\nIts the man from earlier!")
-                
-            else: #Speedruner stuff :O
-                print("Hello there!")
+                print('Those gus sure will come in handy!')
                 sleep(0.5)
-                print("\nWho is this guy?")
+                print("FOR LIBERTY")
                 
-            sleep(0.5)
-            print("\nIf you dont know, I am the great sourcerer")
-            sleep(0.5)
-            print("The beings on the other side of this portal have called me to help them!")
-            sleep(0.5)
-            print("\nLooks like somthing is emerging from that wormhole!")
-            sleep(0.5)
-            print("\nHello my parents!")
-            sleep(0.5)
-            print("\nYOU WILL MAKE A NICE SNACK YOUNG ONE")
-            print("\nIt apears that the 'dark ones' just ate 'the great sourcerer'")
-            sleep(0.5)
-            print("\nTRANSMISSION TERMINATED")
-            sleep(0.5)
-            print("\nINCOMING TRANSMISSION")
-            sleep(0.5)
-            print("THE ONES OF STEEL WISH TO GRANT YOU OUR SHIP")
-            sleep(0.5)
-            print("TRANSMISSION TERMINATED")
-            
-            hp+=200 #buff that you REALLY need
-            atk+=50
-            
-            status()
-            
-            print("\nWell, lets go monster hunting!")
-            sleep(0.5)
-            print("YOU SHALL DIEEEEEEEEEEEEE")
-            sleep(0.5)
-            
-            combat("THE DARK ONE",300,50) #THICK BOI
-            dead()
-            
-            sleep(0.5)
-            print("\nNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-            sleep(0.5)
-            print("\nOh my! We killed it!")
-            sleep(0.5)
-            print("LETS GOOO!")
-            sleep(0.5)
-        
-        else: #chosing not to fight? die
-            print("Ummmmmmm")
-            sleep(0.5)
-            print("UH OH")
-            sleep(2.5)
-            hp-=hp
-            dead()
+            elif solVisited == True: #skipping the shop?
+                print("\nThat man's family needs us")
+                sleep(0.5)
+                print("We might die though")
+                
+            elif bernardVisited == True: #skpping sol :/
+                print('\nStraight from shopping to getting killed?')
+                sleep(0.5)
+                print("I have a bad feeling about this")
+                
+            else: #Speedruner :O
+                print("\nWe are unprepared for anything of this proportion!")
+                sleep(0.5)
+                print("We are doomed")
+                
+            threat = input("\nWILL YOU SURRENDER?\n")
+            #those cultists, theatening me
+            if threat.upper() == 'NO' or threat.upper() == 'N':
+                print('\nTRANSMISSION TERMINATED')
+                print('Lets do this')
+                
+                combat('ONE OF STEEL',200,50) # mans a tank, you need those buffs
+                dead()
+                
+                print('We did it!')
+                sleep(0.5)
+                print('YOU FOOL')
+                sleep(0.5)
+                print("DO YOU KNOW WHAT YOU HAVE DONE?")
+                sleep(0.5)
+                print("THE ONE OF DARKNESS")
+                sleep(0.5)
+                print("HE LIES BEYOND THE WORMHOLE")
+                sleep(0.5)
+                print("THAT WE WERE GARDING")
+                sleep(0.5)
+                print("YOU HAVE DOOMED THIS REALITY")
+                sleep(0.5)
+                print("\nINCOMING TRANSMISSION")
+                sleep(0.5)
+                
+                if solVisited == True: #that guy
+                    print("Hello again!")
+                    sleep(0.5)
+                    print("\nIts the man from earlier!")
+                    
+                else: #Speedruner stuff :O
+                    print("Hello there!")
+                    sleep(0.5)
+                    print("\nWho is this guy?")
+                    
+                sleep(0.5)
+                print("\nIf you dont know, I am the great sourcerer")
+                sleep(0.5)
+                print("The beings on the other side of this portal have called me to help them!")
+                sleep(0.5)
     
+                helpDark = input("You should too!\n")
+                if helpDark.upper() == 'NO' or helpDark.upper() == 'N':
+                    print("\nLooks like somthing is emerging from that wormhole!")
+                    sleep(0.5)
+                    print("\nHello my parents!")
+                    sleep(0.5)
+                    print("\nYOU WILL MAKE A NICE SNACK YOUNG ONE")
+                    print("\nIt apears that the 'dark ones' just ate 'the great sourcerer'")
+                    sleep(0.5)
+                    print("\nTRANSMISSION TERMINATED")
+                    sleep(0.5)
+                    print("\nINCOMING TRANSMISSION")
+                    sleep(0.5)
+                    print("THE ONES OF STEEL WISH TO GRANT YOU OUR SHIP")
+                    sleep(0.5)
+                    print("TRANSMISSION TERMINATED")
+                    
+                    hp+=200 #buff that you REALLY need
+                    atk+=50
+                    
+                    status()
+                    
+                    print("\nWell, lets go monster hunting!")
+                    sleep(0.5)
+                    print("YOU SHALL DIEEEEEEEEEEEEE")
+                    sleep(0.5)
+                    
+                    combat("THE DARK ONE",300,50) #THICK BOI
+                    dead()
+        
+                    sleep(0.5)           
+                    print("\nNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                    sleep(0.5)
+                    print("\nOh my! We killed it!")
+                    sleep(0.5)
+                    print("LETS GOOO!")
+                    sleep(0.5)
+                    print("\nNarrator here")
+                    sleep(0.5)
+                    print("You live in the Alpha Centuri System for the rest of time")
+                    sleep(1)
+                    print("You reform the ones of steel")
+                    sleep(0.5)
+                    print("You live out your days costently beating back the dark one")
+                    sleep(1)
+                    print("Is this what you wanted?")
+                    exit()
+                else:
+                    print("Well, you join me then!")
+                    sleep(0.5)
+                    print("\nHere they come!")
+                    sleep(0.5)
+                    print("\nHello holy one!")
+                    sleep(0.5)
+                    print("You called and I answered")
+                    sleep(0.5)
+                    print("\nYOU WILL MAKE A NICE SNACK")
+                    sleep(0.5)
+                    print("\nSir, the wizard just got eaten")
+                    sleep(0.5)
+                    print("\nYOU THERE")
+                    sleep(0.5)
+                    print("JOIN ME, AND WE SHALL RULE")
+                    sleep(0.5)
+    	
+                    acceptDark = input("\nSounds good to me. You sir?\n") #will you accept him?
+                    if acceptDark.upper() == 'YES' or acceptDark.upper == 'Y':
+                        print("\nNarrator here")#w narrator fr
+                        sleep(0.5)
+                        print("After you accept the dark one, you and him take over the entire galaxy")
+                        sleep(1)
+                        print("You two rule together in a violent dictatorship")
+                        sleep(0.5)
+                        print("You enslave countless different species")
+                        sleep(0.5)
+                        print("Is this what you wanted?")
+                        sleep(0.5)
+                        print("Evil and violence forever?")
+                        exit()
+    
+                    else:
+                        print("\nNO!?")
+                        sleep(0.5)
+                        print("THEN DIE")
+                        sleep(0.5)
+                        print("\nNarrator here")#narrator 100
+                        sleep(0.5)
+                        print("The dark one, now fully out of the portal, smites us where we stand")
+                        sleep(1)
+                        print("Your second in command takes over and joins the dark one")
+                        sleep(1)
+                        print("They rule the galaxy with an iron fist")
+                        sleep(0.5)
+                        print("One day, your second in command decides that what he is doing is wrong")
+                        sleep(1)
+                        print("The dark one replaces him with his second in command")
+                        sleep(1)
+                        print("This cycle repeats for eternity")
+                        sleep(0.5)
+                        print("Is this what you wanted?")
+    	                exit()
+    
+            
+            else: #chosing not to fight? die
+                print("Ummmmmmm")
+                sleep(0.5)
+                print("UH OH")
+                sleep(2.5)
+                hp-=hp
+                dead()
+                
+                
+        else:
+            print("INCOMING TRANSMISSION")
+            sleep(0.5)
+            print("ONES OF STEEL HERE")
+            sleep(0.5)
+            print("\nDARN") #NOICE ENDING
+            sleep(0.5)
+            print("HELLA FINE MERCH")
+            sleep(0.5)
+            print("JOIN US")
+            sleep(0.5)
+            print("\nNarrator here")
+            sleep(0.5)
+            print("You live hapily ever after with the cult")
+            sleep(0.5)
+            print("Good job finding the good ending!")
+            exit()
     
     
